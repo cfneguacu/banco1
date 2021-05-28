@@ -1,5 +1,7 @@
 package banco1;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
@@ -16,7 +18,7 @@ public class Banco1 {
 		
 		do {
 			System.out.println("------------------------------------");
-			System.out.println("[1] Nova Conta\n[2] - Remover Conta\n[3] - Dados do Cliente");
+			System.out.println("[1] Nova Conta\n[2] - Remover Conta\n[3] - Dados do Cliente\n[4] - Listar Contas");
 			System.out.println("------------------------------------");
 			opcao = sc.nextInt();
 			switch(opcao) {
@@ -90,6 +92,17 @@ public class Banco1 {
 				}
 				
 				break;
+				
+			case 4:
+				
+				Collection c = agencia.values();
+				Iterator i = c.iterator();
+				int cont = 0;
+				while (i.hasNext()) {
+					cliente = (Cliente) i.next();
+					cont++;
+					System.out.println(cont+"- Cliente: " + cliente.getNome() + " Agencia: " + cliente.getConta().getAgenciaBancaria() + " Conta: " + cliente.getConta().getNumeroDaConta() +  " Saldo: " + String.format("%.2f",cliente.getConta().getSaldo()));
+				}
 			}
 			
 
